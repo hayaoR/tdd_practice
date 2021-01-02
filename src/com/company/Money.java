@@ -17,7 +17,11 @@ package com.company;
         return new Money(amount, "CHF");
     }
 
-    Money times(int multiplier){
+    Money plus(Money money) {
+       return new Money(this.amount + money.amount, currency);
+    }
+
+    Money times(int multiplier) {
         return new Money(amount*multiplier, currency);
     }
       String currency() {

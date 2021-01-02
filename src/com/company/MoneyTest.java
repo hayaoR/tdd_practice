@@ -7,14 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class MoneyTest {
 
     @Test
+    void addition() {
+        Money sum = Money.dollar(5).plus(Money.dollar(5));
+        assertEquals(Money.dollar(10), sum);
+    }
+    @Test
     void multiplication() {
         Money five  = Money.dollar(5);
         assertEquals(new Money(10, "USD"), five.times(2));
         assertEquals(new Money(15, "USD"), five.times(3));
-
-         five = Money.franc(5);
-        assertEquals(new Money(10, "CHF"), five.times(2));
-        assertEquals(new Money(15, "CHF"), five.times(3));
     }
 
     @Test
@@ -27,9 +28,6 @@ class MoneyTest {
     void equality() {
         assertEquals(new Money(5, "USD"), new Money(5, "USD"));
         assertNotEquals(new Money(5, "USD"), new Money(6, "USD"));
-
-        assertEquals(new Money(5, "CHF"), new Money(5, "CHF"));
-        assertNotEquals(new Money(5, "CHF"), new Money(6, "CHF"));
 
         assertNotEquals(new Money(5, "USD"), new Money(5, "CHF"));
 
