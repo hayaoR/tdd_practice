@@ -2,8 +2,6 @@ package com.company;
 
 import org.junit.jupiter.api.Test;
 
-import java.awt.event.MouseAdapter;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class MoneyTest {
@@ -11,12 +9,12 @@ class MoneyTest {
     @Test
     void multiplication() {
         Money five  = Money.dollar(5);
-        assertEquals(new Dollar(10), five.times(2));
-        assertEquals(new Dollar(15), five.times(3));
+        assertEquals(new Money(10, "USD"), five.times(2));
+        assertEquals(new Money(15, "USD"), five.times(3));
 
          five = Money.franc(5);
-        assertEquals(new Franc(10), five.times(2));
-        assertEquals(new Franc(15), five.times(3));
+        assertEquals(new Money(10, "CHF"), five.times(2));
+        assertEquals(new Money(15, "CHF"), five.times(3));
     }
 
     @Test
@@ -27,13 +25,13 @@ class MoneyTest {
 
     @Test
     void equality() {
-        assertEquals(new Dollar(5), new Dollar(5));
-        assertNotEquals(new Dollar(6), new Dollar(5));
+        assertEquals(new Money(5, "USD"), new Money(5, "USD"));
+        assertNotEquals(new Money(5, "USD"), new Money(6, "USD"));
 
-        assertEquals(new Franc(5), new Franc(5));
-        assertNotEquals(new Franc(6), new Franc(5));
+        assertEquals(new Money(5, "CHF"), new Money(5, "CHF"));
+        assertNotEquals(new Money(5, "CHF"), new Money(6, "CHF"));
 
-        assertNotEquals(new Dollar(5), new Franc(5));
+        assertNotEquals(new Money(5, "USD"), new Money(5, "CHF"));
 
         assertEquals(Money.dollar(5), Money.dollar(5));
         assertNotEquals(Money.dollar(5), Money.dollar(6));
