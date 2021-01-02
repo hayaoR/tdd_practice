@@ -8,12 +8,17 @@ class MoneyTest {
 
     @Test
     void addition() {
-        Money sum = Money.dollar(5).plus(Money.dollar(5));
-        assertEquals(Money.dollar(10), sum);
+        Bank bank = new Bank();
+        Money five = Money.dollar(5);
+
+        Expression sum = five.plus(five);
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(10),  reduced);
     }
     @Test
     void multiplication() {
         Money five  = Money.dollar(5);
+
         assertEquals(new Money(10, "USD"), five.times(2));
         assertEquals(new Money(15, "USD"), five.times(3));
     }
