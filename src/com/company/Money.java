@@ -24,6 +24,10 @@ package com.company;
     Money times(int multiplier) {
         return new Money(amount*multiplier, currency);
     }
+
+    public Money reduce (String to) {
+        return this;
+    }
       String currency() {
           return  currency;
       }
