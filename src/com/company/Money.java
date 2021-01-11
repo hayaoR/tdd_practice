@@ -17,8 +17,8 @@ package com.company;
         return new Money(amount, "CHF");
     }
 
-    Expression plus(Money added) {
-       return new Money(this.amount + added.amount, currency);
+    Expression plus(Money addend) {
+       return new Sum(this, addend);
     }
 
     Money times(int multiplier) {
@@ -26,6 +26,11 @@ package com.company;
     }
       String currency() {
           return  currency;
+      }
+
+      @Override
+      public String toString() {
+        return amount + " "  +  currency;
       }
 
     @Override
