@@ -17,11 +17,11 @@ package com.company;
         return new Money(amount, "CHF");
     }
 
-    Expression plus(Money addend) {
+    public Expression plus(Expression addend) {
        return new Sum(this, addend);
     }
 
-    Money times(int multiplier) {
+    Expression times(int multiplier) {
         return new Money(amount*multiplier, currency);
     }
 

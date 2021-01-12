@@ -21,9 +21,9 @@ class MoneyTest {
         Bank bank = new Bank();
         bank.addRate("CHF", "USD", 2);
 
-        Money five = Money.dollar(5);
-        Money ten = Money.franc(10);
-        Expression sum = five.plus(ten);
+        Expression fiveDollar = Money.dollar(5);
+        Expression tenFranc = Money.franc(10);
+        Expression sum = fiveDollar.plus(tenFranc);
         Money reduced = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(10), reduced);
     }
