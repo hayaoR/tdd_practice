@@ -17,6 +17,18 @@ class MoneyTest {
     }
 
     @Test
+    void additionDifferentCurrency() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+
+        Money five = Money.dollar(5);
+        Money ten = Money.franc(10);
+        Expression sum = five.plus(ten);
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(10), reduced);
+    }
+
+    @Test
     void plusReturnSum() {
         Money five  = Money.dollar(5);
         Expression result = five.plus(five);
