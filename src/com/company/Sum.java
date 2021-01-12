@@ -10,9 +10,7 @@ public class Sum implements  Expression{
     }
 
     public  Money reduce(Bank bank, String to) {
-        int addrate = bank.rate(this.addend.currency,  to);
-        int augrate = bank.rate(this.augend.currency,  to);
-        int amount = augend.amount / augrate+ addend.amount / addrate;
+        int amount = augend.reduce(bank, to).amount + addend.reduce(bank, to).amount;
         return new Money(amount, to);
     }
 }
